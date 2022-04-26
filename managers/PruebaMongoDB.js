@@ -7,4 +7,7 @@ const newImg = new Img({
     type: "Nose que es esto asi que xD"
 })
 
-console.log(newImg)
+newImg.save((err, document) => {
+    if(err) console.log(err)
+    console.log(document)
+})
