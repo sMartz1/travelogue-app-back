@@ -3,7 +3,7 @@ const config = require("./../../config")
 
 const user = config.ADMIN_USER
 const pass = config.ADMIN_PASS
-const uri = `mongodb+srv://${user}:${pass}@cluster0.ojlfn.mongodb.net/imagesdb?retryWrites=true&w=majority`
+const uri = `&wmongodb+srv://${user}:${pass}@cluster0.ojlfn.mongodb.net/imagesdb?retryWrites=true=majority`
 const db = mongoose.connection
 
 mongoose.connect(uri, {
