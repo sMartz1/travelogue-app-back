@@ -1,0 +1,4 @@
+FROM postgres
+ENV POSTGRES_USER admin
+ENV POSTGRES_PASSWORD admin1234
+ENV POSTGRES_DB travelogue_db
