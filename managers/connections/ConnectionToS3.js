@@ -5,4 +5,4 @@ const s3 = new AWS.S3({
     secretAccessKey: config.S3_SECRET_ACCESSKEY
 })
 
-export default s3
+module.exports = s3
