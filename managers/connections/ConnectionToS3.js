@@ -5,4 +5,9 @@ const s3 = new AWS.S3({
     secretAccessKey: config.S3_SECRET_ACCESSKEY
 })
 
+/**
+ * Documentation
+ * https://docs.aws.amazon.com/AmazonS3/latest/API/API_Operations_Amazon_Simple_Storage_Service.html
+ */
+
 module.exports = s3
