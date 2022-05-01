@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const config = require("./../../config")
 
-const user = config.ADMIN_USER
-const pass = config.ADMIN_PASS
+const user = config.MONGO_USER
+const pass = config.MONGO_PASS
 const uri = `&wmongodb+srv://${user}:${pass}@cluster0.ojlfn.mongodb.net/imagesdb?retryWrites=true=majority`
 const db = mongoose.connection
 
