@@ -2,6 +2,8 @@ require("dotenv").config();
 
 module.exports = {
     PORT: process.env.PORT,
-    ADMIN_USER: process.env.ADMIN_USER,
-    ADMIN_PASS: process.env.ADMIN_PASS
+    MONGO_USER: process.env.MONGO_USER,
+    MONGO_PASS: process.env.MONGO_PASS,
+    S3_ID_ACCESSKEY: process.env.S3_ID_ACCESSKEY,
+    S3_SECRET_ACCESSKEY: process.env.S3_SECRET_ACCESSKEY
 }
