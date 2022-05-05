@@ -3,13 +3,9 @@ module.exports = {
   async up(queryInterface, DataTypes) {
     await queryInterface.createTable('itineraryplace', {
       id: {
-        allowNull: false,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      },
-      id: {
         type: DataTypes.UUID,
-        allowNull:false
+        allowNull:false,
+        primaryKey: true
       },
       id_itinerary: {
         type: DataTypes.UUID,
