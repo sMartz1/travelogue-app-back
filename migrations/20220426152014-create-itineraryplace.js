@@ -39,7 +39,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, DataTypes) {
+  async down(queryInterface,_Sequelize) {
     await queryInterface.dropTable('itineryplaces');
   }
 };
