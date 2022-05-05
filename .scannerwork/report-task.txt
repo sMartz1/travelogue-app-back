@@ -1,0 +1,6 @@
+projectKey=TL-BACK
+serverUrl=http://localhost:9000
+serverVersion=9.4.0.54424
+dashboardUrl=http://localhost:9000/dashboard?id=TL-BACK
+ceTaskId=AYCEv5u49Umi6LqIm7HG
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYCEv5u49Umi6LqIm7HG
