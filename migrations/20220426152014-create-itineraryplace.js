@@ -1,49 +1,45 @@
-'use strict';
+"use strict";
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('itineraryplace', {
-      id: {
-        allowNull: false,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      },
+    await queryInterface.createTable("itineraryplace", {
       id: {
         type: DataTypes.UUID,
-        allowNull:false
+        allowNull: false,
+        primaryKey: true,
       },
       id_itinerary: {
         type: DataTypes.UUID,
-        allowNull:false,
-        references:{
-          model:{tableName:"itineraries"},
-          key:"id"
-        }
+        allowNull: false,
+        references: {
+          model: { tableName: "itineraries" },
+          key: "id",
+        },
       },
       id_place: {
         type: DataTypes.UUID,
-        allowNull:false,
-        references:{
-          model:{
-            tableName:'places'
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "places",
           },
-          key:"id"
-        }
+          key: "id",
+        },
       },
       date_place: {
         type: DataTypes.DATE,
-        allowNull:false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
-      }
+        type: DataTypes.DATE,
+      },
     });
   },
-  async down(queryInterface, DataTypes) {
-    await queryInterface.dropTable('itineryplaces');
-  }
+  async down(queryInterface, _Sequelize) {
+    await queryInterface.dropTable("itineryplaces");
+  },
 };

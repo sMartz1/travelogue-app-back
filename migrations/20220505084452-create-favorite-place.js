@@ -1,25 +1,26 @@
 "use strict";
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable("places", {
+    await queryInterface.createTable("favoriteplaces", {
       id: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
       },
-      name: {
-        type: DataTypes.STRING,
+      id_user: {
         allowNull: false,
+        type: DataTypes.UUID,
       },
-      location: {
-        type: DataTypes.STRING,
+      id_place: {
+        type: DataTypes.UUID,
         allowNull: false,
-      },
-      image_path: {
-        type: DataTypes.STRING,
-      },
-      price: {
-        type: DataTypes.INTEGER,
+        references: {
+          model: {
+            tableName: "places",
+          },
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface, _Sequelize) {
-    await queryInterface.dropTable("places");
+    await queryInterface.dropTable("favoriteplaces");
   },
 };

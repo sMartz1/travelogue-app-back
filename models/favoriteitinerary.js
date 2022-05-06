@@ -1,38 +1,37 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class ItineraryPlace extends Model {
+  class FavoriteItinerary extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Place, Itinerary }) {
+    static associate({ Itinerary }) {
       this.belongsTo(Itinerary, {
         foreignKey: "id_itinerary",
         as: "itinerary",
       });
-      this.belongsTo(Place, { foreignKey: "id_place", as: "place" });
     }
   }
-  ItineraryPlace.init(
+  favoriteitinerary.init(
     {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      date_place: {
-        type: DataTypes.DATE,
+      id_user: {
         allowNull: false,
+        type: DataTypes.UUID,
       },
     },
     {
       sequelize,
-      tableName: "itineraryplaces",
-      modelName: "ItineraryPlace",
+      tableName: "favoritineraries",
+      modelName: "FavoriteItinerary",
     }
   );
-  return ItineraryPlace;
+  return FavoriteItinerary;
 };

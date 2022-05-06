@@ -1,21 +1,20 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Itinerary extends Model {
+  class RatingPlace extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ ItineraryPlace, FavoriteItinerary }) {
-      this.hasMany(ItineraryPlace, { foreignKey: "id_itinerary", as: "steps" });
-      this.hasMany(FavoriteItinerary, {
-        foreignKey: "id_itinerary",
-        as: "favorites",
+    static associate({ Place }) {
+      this.belongsTo(Place, {
+        foreignKey: "id_place",
+        as: "place",
       });
     }
   }
-  Itinerary.init(
+  ratingplace.init(
     {
       id: {
         allowNull: false,
@@ -23,27 +22,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      name: {
-        type: DataTypes.STRING,
+      id_user: {
         allowNull: false,
+        type: DataTypes.UUID,
       },
-      start_location: {
-        type: DataTypes.STRING,
+      value: {
         allowNull: false,
-      },
-      end_location: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      price: {
         type: DataTypes.INTEGER,
       },
     },
     {
       sequelize,
-      tableName: "itineraries",
-      modelName: "Itinerary",
+      tableName: "ratingplaces",
+      modelName: "RatingPlace",
     }
   );
-  return Itinerary;
+  return RatingPlace;
 };
