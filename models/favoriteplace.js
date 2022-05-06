@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(Place, { foreignKey: "id_place", as: "place" });
     }
   }
-  favorite.init(
+  FavoritePlace.init(
     {
       id: {
         allowNull: false,

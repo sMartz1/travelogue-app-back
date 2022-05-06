@@ -1,5 +1,5 @@
 const router = require("express").Router();
 
-// router.get("/*", require("../controllers/***"))
+router.use("/places", require("./places"))
 
 module.exports = router;

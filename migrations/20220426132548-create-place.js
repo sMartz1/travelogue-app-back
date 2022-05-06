@@ -7,6 +7,10 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.UUID,
       },
+      id_user: {
+        allowNull: false,
+        type: DataTypes.UUID,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,

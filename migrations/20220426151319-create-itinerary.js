@@ -22,7 +22,7 @@ module.exports = {
       price: {
         type: DataTypes.INTEGER,
       },
-      user_id: {
+      id_user: {
         type: DataTypes.UUID,
         allowNull: false,
       },
