@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  ratingitinerary.init(
+  RatingItinerary.init(
     {
       id: {
         allowNull: false,

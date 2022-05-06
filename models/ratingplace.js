@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  ratingplace.init(
+  RatingPlace.init(
     {
       id: {
         allowNull: false,

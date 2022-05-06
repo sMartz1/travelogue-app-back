@@ -19,7 +19,7 @@ const generateItinerariesPlaces = async (amountOfRegs) => {
     id_place: faker.random.arrayElement(arrayPlaces),
     date_place: new Date(),
     createdAt: new Date(),
-    updatedAt: new Date(),
+    updatedAt: new Date()
   }));
 };
 

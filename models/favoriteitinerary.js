@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  favoriteitinerary.init(
+  FavoriteItinerary.init(
     {
       id: {
         allowNull: false,
