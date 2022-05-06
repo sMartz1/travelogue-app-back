@@ -1,42 +1,42 @@
-'use strict';
+"use strict";
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable('itineraries', {
+    await queryInterface.createTable("itineraries", {
       id: {
         allowNull: false,
         primaryKey: true,
-        type: DataTypes.UUID
+        type: DataTypes.UUID,
       },
       name: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: false,
       },
       start_location: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: false,
       },
       end_location: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: false,
       },
       price: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
       },
       user_id: {
         type: DataTypes.UUID,
-        allowNull:false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
-      }
+        type: DataTypes.DATE,
+      },
     });
   },
-  async down(queryInterface,_Sequelize) {
-    await queryInterface.dropTable('itineraries');
-  }
+  async down(queryInterface, _Sequelize) {
+    await queryInterface.dropTable("itineraries");
+  },
 };

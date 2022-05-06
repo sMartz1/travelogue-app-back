@@ -8,19 +8,19 @@ module.exports = {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      id_user:{
-        allowNull:false,
-        type:DataTypes.UUID
+      id_user: {
+        allowNull: false,
+        type: DataTypes.UUID,
       },
       id_place: {
         type: DataTypes.UUID,
-        allowNull:false,
-        references:{
-          model:{
-            tableName:'places'
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "places",
           },
-          key:"id"
-        }
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
@@ -32,7 +32,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface,_Sequelize) {
+  async down(queryInterface, _Sequelize) {
     await queryInterface.dropTable("favoriteplaces");
   },
 };
