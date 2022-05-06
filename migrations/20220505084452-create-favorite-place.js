@@ -1,25 +1,26 @@
 "use strict";
-const enumTypes = ["place", "itinerary"];
 module.exports = {
   async up(queryInterface, DataTypes) {
-    await queryInterface.createTable("favorites", {
+    await queryInterface.createTable("favoriteplaces", {
       id: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      type: {
-        allowNull: false,
-        type: DataTypes.ENUM(enumTypes),
-      },
       id_user:{
         allowNull:false,
         type:DataTypes.UUID
       },
-      id_reference:{
+      id_place: {
+        type: DataTypes.UUID,
         allowNull:false,
-        type:DataTypes.UUID
+        references:{
+          model:{
+            tableName:'places'
+          },
+          key:"id"
+        }
       },
       createdAt: {
         allowNull: false,
@@ -32,6 +33,6 @@ module.exports = {
     });
   },
   async down(queryInterface,_Sequelize) {
-    await queryInterface.dropTable("favorites");
+    await queryInterface.dropTable("favoriteplaces");
   },
 };

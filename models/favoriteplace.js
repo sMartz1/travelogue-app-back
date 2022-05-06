@@ -1,16 +1,15 @@
 "use strict";
-
-const enumTypes = ["place", "itinerary"];
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Favorite extends Model {
+  class FavoritePlace extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(_models) {
+    static associate({ Place }) {
       // define association here
+      this.belongsTo(Place, { foreignKey: "id_place", as: "place" });
     }
   }
   favorite.init(
@@ -25,20 +24,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.UUID,
       },
-      type: {
-        allowNull: false,
-        type: DataTypes.ENUM(enumTypes),
-      },
-      id_reference: {
-        allowNull: false,
-        type: DataTypes.UUID,
-      },
     },
     {
       sequelize,
-      tableName: "favorites",
-      modelName: "Favorite",
+      tableName: "favoriteplaces",
+      modelName: "FavoritePlace",
     }
   );
-  return Favorite;
+  return FavoritePlace;
 };
