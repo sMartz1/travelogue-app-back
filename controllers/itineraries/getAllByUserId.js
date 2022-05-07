@@ -1,7 +1,7 @@
-const ItineraryManager = require('../../managers/ItineraryManager')
+const ItineraryManager = require("../../managers/ItineraryManager");
 
 async function getAllByUserId(req, res) {
-        res.status(200).json(await PlaceManager.getAllByUser(req.params.userId));
+  res.status(200).json(await ItineraryManager.getAllByUser(req.params.userId));
 }
 
 module.exports = getAllByUserId;
