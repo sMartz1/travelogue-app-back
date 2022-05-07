@@ -1,4 +1,4 @@
-const PlaceManager = require('../../managers/PlaceManager')
+const ItineraryManager = require('../../managers/ItineraryManager')
 
 async function getAllByUserId(req, res) {
         res.status(200).json(await PlaceManager.getAllByUser(req.params.userId));
