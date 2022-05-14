@@ -18,6 +18,7 @@
   "homepage": "https://github.com/sMartz1/travelogue-app-back#readme",
   "dependencies": {
     "@faker-js/faker": "^6.2.0",
+    "aws-jwt-verify": "^3.0.0",
     "aws-sdk": "^2.1125.0",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
