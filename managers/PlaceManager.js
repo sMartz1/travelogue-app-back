@@ -1,4 +1,4 @@
-const { Place, FavoritePlace } = require("../models");
+const { Place, FavoritePlace, Itinerary } = require("../models");
 
 //Function that retrieves places created and in favorites of an user.
 const getAllByUser = async (id_user) => {
@@ -18,22 +18,31 @@ const getAllByUser = async (id_user) => {
  * 
  * @returns arr
  */
-const getRandoms = async() => {
-  const randomPlaces = [];
+const getRandoms = async(type) => {
+  const randomObjects = [];
   const numberOfRandoms = 12;
+  let database = ''
 
   try{
-    const allPlacesQuery = await Place.findAll()
-    const allPlaces = allPlacesQuery.map(e => e.dataValues)
-    const numMax = Math.floor(Math.random()*(allPlaces.length-numberOfRandoms))
-
-    for(let i = 0 ; i < numberOfRandoms ; i++){
-      randomPlaces.push(allPlaces[numMax+i])
+    if(type == 'itineraries'){
+      const allObjectsQuery = await Itinerary.findAll()
+      database = allObjectsQuery.map(e => e.dataValues)
+    }else if(type == 'places'){
+      const allObjectsQuery = await Place.findAll()
+      database = allObjectsQuery.map(e => e.dataValues)
+    }else{
+      return []
     }
 
-    return randomPlaces
+    const numMax = Math.floor(Math.random()*(database.length-numberOfRandoms))
+    for(let i = 0 ; i < numberOfRandoms ; i++){
+      randomObjects.push(database[numMax+i])
+    }
+
+    return randomObjects
 
   }catch(error){
+    console.error(error)
     return []
   }
   
