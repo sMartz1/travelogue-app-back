@@ -3,9 +3,10 @@ const cors = require("cors");
 const {sequelize}  = require("./models")
 const config = require("./config")
 var bodyParser = require("body-parser");
-
+const db = require('./managers/connections/ConnectionMongoose')
 app.use(bodyParser.json());
 app.use(cors());
+
 
 const PORT = config.PORT;
 
