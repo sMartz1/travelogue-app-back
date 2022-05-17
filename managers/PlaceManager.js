@@ -1,16 +1,21 @@
+<<<<<<< HEAD
 const { Place , FavoritePlace  } = require('../models');
 const imgSchema = require('../schemas/Img')
+=======
+const { Place, FavoritePlace } = require("../models");
+>>>>>>> 3dc9d88e25ebc64117215e26d9d76d2b36a93fd2
 
-const getAllByUser = async (id_user) =>{
-    let tempArray = [];
-    const placeOwned = await Place.findAll({where: {id_user}});
-    const favoritePlace = await FavoritePlace.findAll({where: {id_user} });
-
-    placeOwned.forEach(placeO=>tempArray.push(placeO.dataValues));
-    favoritePlace.forEach(favoriteP=>tempArray.push(favoriteP.dataValues));
-
-    return tempArray;
-}
+//Function that retrieves places created and in favorites of an user.
+const getAllByUser = async (id_user) => {
+  let tempArray = { own: [], favorites: [] };
+  const placeOwned = await Place.findAll({ where: { id_user } });
+  const favoritePlace = await FavoritePlace.findAll({ where: { id_user } });
+  placeOwned.forEach((placeO) => tempArray["own"].push(placeO.dataValues));
+  favoritePlace.forEach((favoriteP) =>
+    tempArray["favorites"].push(favoriteP.dataValues)
+  );
+  return tempArray;
+};
 
 
     const createPlace = async (body) => {
