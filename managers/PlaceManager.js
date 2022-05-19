@@ -1,6 +1,6 @@
+
 const imgSchema = require('../schemas/Img')
 const { Place, FavoritePlace } = require("../models");
-
 
 //Function that retrieves places created and in favorites of an user.
 const getAllByUser = async (id_user) => {
@@ -13,6 +13,7 @@ const getAllByUser = async (id_user) => {
   );
   return tempArray;
 };
+
 
 
     const createPlace = async (body) => {
@@ -37,6 +38,6 @@ const getAllByUser = async (id_user) => {
 
 
 
-module.exports = {
-    getAllByUser,createPlace
-}
+
+module.exports = {getAllByUser,createPlace};
+
