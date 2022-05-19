@@ -4,9 +4,10 @@ const {sequelize}  = require("./models")
 const config = require("./config")
 const authentication = require("./middlewares/authentication")
 var bodyParser = require("body-parser");
-
+const db = require('./managers/connections/ConnectionMongoose')
 app.use(bodyParser.json());
 app.use(cors());
+
 
 const PORT = config.PORT;
 
