@@ -1,4 +1,4 @@
-const PlaceManager = require("../../managers/ItineraryManager");
+const PlaceManager = require("../../managers/PlaceManager");
 
 async function delteOnePlace(req, res) {
   res.status(200).json(await PlaceManager.deletePlace(req.body));
