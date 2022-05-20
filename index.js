@@ -2,7 +2,7 @@ const app = require("express")();
 const cors = require("cors");
 const {sequelize}  = require("./models")
 const config = require("./config")
-const authentication = require("./middlewares/authentication")
+const authentication = require("./middlewares/authentication") 
 var bodyParser = require("body-parser");
 const db = require('./managers/connections/ConnectionMongoose')
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ app.use("/api", require("./routes"));
 
 //route for registered users
 app.use(process.env.ROOT_LOGGED,authentication, require('./routes'));
-
+ 
 
 app.listen(PORT,()=>{
     console.log(`Server running on PORT ${PORT}`);

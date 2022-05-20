@@ -14,9 +14,8 @@ const getAllByUser = async (id_user) => {
   return tempArray;
 };
 
-
-
-    const createPlace = async (body) => {
+//Function that create a place with his correspondent image
+const createPlace = async (body) => {
     const {name,location,price,id_user,path_image} = body
     const newPlace = await Place.create({
         name,
@@ -36,10 +35,18 @@ const getAllByUser = async (id_user) => {
     }
 }
 
+//Function that retrieves a single place with his image
+const getPlaceById = async (params) => {
+    const id = params
+    const {dataValues} = await Place.findOne({where : {id}})
+    const placeImg = await imgSchema.find({idRel : id})
+    const placeWithImg = {...dataValues,...placeImg}
+    return placeWithImg
+}
+
 
 
 
 module.exports = {
-
-    getAllByUser,createPlace
+    getAllByUser,createPlace,getPlaceById
 }
