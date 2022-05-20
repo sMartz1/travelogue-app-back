@@ -1,5 +1,4 @@
 const { CognitoJwtVerifier , CognitoJwtDecoder} = require("aws-jwt-verify");
-console.log('en middleware CognitoJwt');
 // Create the verifier outside your route handlers,
 // so the cache is persisted and can be shared amongst them.
 const jwtVerifier = CognitoJwtVerifier.create({
@@ -11,7 +10,6 @@ const jwtVerifier = CognitoJwtVerifier.create({
 });
 /* const jwt = CognitoJwtDecoder.create() */
  const verifyToken = async (req, res, next) => {
-  console.log(jwtVerifier)
  /*  const decodedJwt = jwt.decode(req.header("authorization"), { complete: true }); */
   try {
     // A valid JWT is expected in the HTTP header "authorization"

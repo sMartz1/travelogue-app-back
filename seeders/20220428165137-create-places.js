@@ -14,7 +14,7 @@ const generatePlaces = async (amountOfRegs) => {
     id: faker.datatype.uuid(),
     id_user: faker.random.arrayElement(arrayFakeUserIds),
     name: faker.address.cityName(),
-    location: faker.address.nearbyGPSCoordinate().toString(),
+    location: `${faker.address.latitude(90,-90)},${faker.address.longitude(90,-90)}`,
     image_path: faker.image.city(),
     price: faker.commerce.price(1, 100, 0),
     createdAt: new Date(),

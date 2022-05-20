@@ -11,6 +11,10 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      description:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       start_location: {
         type: DataTypes.STRING,
         allowNull: false,
