@@ -145,10 +145,7 @@ module.exports = {
   deletePlace,
   getItineraryPlaces,
   deletePlaces,
-<<<<<<< Updated upstream
-  getItineraryPlacesAndData
-=======
+  getItineraryPlacesAndData,
   getPlaceById
->>>>>>> Stashed changes
 };
 
