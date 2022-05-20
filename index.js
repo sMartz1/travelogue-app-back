@@ -6,7 +6,12 @@ const authentication = require("./middlewares/authentication")
 var bodyParser = require("body-parser");
 const db = require('./managers/connections/ConnectionMongoose')
 app.use(bodyParser.json());
-app.use(cors());
+const corsOptions ={
+  origin:'http://localhost:3000', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 
 
 const PORT = config.PORT;
