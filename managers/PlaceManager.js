@@ -67,8 +67,7 @@ const getItineraryPlacesAndData = async (id) => {
 
 
 //Function that retrieves a single place with his image
-const getPlaceById = async (params) => {
-    const id = params
+const getPlaceById = async (id) => {
     const {dataValues} = await Place.findOne({where : {id}})
     const placeImg = await imgSchema.find({idRel : id})
     const placeWithImg = {...dataValues,...placeImg}
