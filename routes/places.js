@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 router.get('/all/:userId',require('../controllers/places/getAllByUserId'))
+router.get('/singlePlace/:id', require('../controllers/places/getPlaceById'))
 router.get('/places/:itineraryId',require('../controllers/places/getItineraryPlaces'))
 router.get('/itineraryplaces/:itineraryId',require('../controllers/places/getItineraryPlacesAndData'))
 router.get('/id/:placeid',require('../controllers/places/getPlaceById'))

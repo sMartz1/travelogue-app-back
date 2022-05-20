@@ -1,7 +1,7 @@
-
 const imgSchema = require('../schemas/Img')
 const { Place, Itinerary, FavoritePlace , ItineraryPlace} = require("../models");
 /* const { ConfigurationServicePlaceholders } = require('aws-sdk/lib/config_service_placeholders'); */
+
 
 //Function that retrieves places created and in favorites of an user.
 const getAllByUser = async (id_user) => {
@@ -65,13 +65,16 @@ const getItineraryPlacesAndData = async (id) => {
   
 };
 
-const getPlaceById  =  async (id)=> {
-  try {
-    const data = await Place.findAll({ where: { id } });
-    return data;
-  }
-  catch (err) {console.log(err)}
+
+//Function that retrieves a single place with his image
+const getPlaceById = async (params) => {
+    const id = params
+    const {dataValues} = await Place.findOne({where : {id}})
+    const placeImg = await imgSchema.find({idRel : id})
+    const placeWithImg = {...dataValues,...placeImg}
+    return placeWithImg
 }
+
 /**
  * We collect all the elements, we generate a random number and use for
  * return the next elements
@@ -108,25 +111,27 @@ const getRandoms = async (type) => {
   
 }
 
+//Function that create a place with his correspondent image
 const createPlace = async (body) => {
-  const { name, location, price, id_user, path_image } = body
-  const newPlace = await Place.create({
-    name,
-    price,
-    location,
-    id_user,
-  })
-  try {
-    const newImgSchema = new imgSchema({
-      idRel: newPlace.id,
-      pathImage: path_image,
-      type: 'place'
+    const {name,location,price,id_user,path_image} = body
+    const newPlace = await Place.create({
+        name,
+        price,
+        location,
+        id_user,
     })
-    await newImgSchema.save()
-  } catch (error) {
-    console.error(error)
-  }
+    try {
+        const newImgSchema = new imgSchema({
+            idRel : newPlace.id,
+            pathImage : path_image,
+            type : 'place'
+        })
+        await newImgSchema.save()  
+    } catch (error) {
+        console.error(error)
+    }
 }
+
 
 const getItineraryPlaces = async (id) => {
   try {
