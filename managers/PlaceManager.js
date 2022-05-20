@@ -65,6 +65,13 @@ const getItineraryPlacesAndData = async (id) => {
   
 };
 
+const getPlaceById  =  async (id)=> {
+  try {
+    const data = await Place.findAll({ where: { id } });
+    return data;
+  }
+  catch (err) {console.log(err)}
+}
 /**
  * We collect all the elements, we generate a random number and use for
  * return the next elements
@@ -138,6 +145,10 @@ module.exports = {
   deletePlace,
   getItineraryPlaces,
   deletePlaces,
+<<<<<<< Updated upstream
   getItineraryPlacesAndData
+=======
+  getPlaceById
+>>>>>>> Stashed changes
 };
 

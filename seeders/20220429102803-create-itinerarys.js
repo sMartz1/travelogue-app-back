@@ -13,6 +13,7 @@ const generateItineraries = async (amountOfRegs) => {
     name: faker.random.words(3),
     start_location: faker.address.nearbyGPSCoordinate().toString(),
     end_location: faker.address.nearbyGPSCoordinate().toString(),
+    description:faker.lorem.sentences(2),
     price: faker.commerce.price(1, 100, 0),
     id_user: faker.random.arrayElement(arrayFakeUserIds),
     createdAt: new Date(),
