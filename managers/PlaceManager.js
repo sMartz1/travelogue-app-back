@@ -1,6 +1,7 @@
 
 const imgSchema = require('../schemas/Img')
 const { Place, Itinerary, FavoritePlace , ItineraryPlace} = require("../models");
+/* const { ConfigurationServicePlaceholders } = require('aws-sdk/lib/config_service_placeholders'); */
 
 //Function that retrieves places created and in favorites of an user.
 const getAllByUser = async (id_user) => {
@@ -43,10 +44,22 @@ const deletePlaces = async (data) => {
 
 };
 
-const getItineraryPlaces = async (id) => {
+const getItineraryPlacesAndData = async (id) => {
+  const placesData = [];
   try {
     let res = await ItineraryPlace.findAll({ where: { id_itinerary: id } });
-    return res;
+    let idsArray=[];
+    res.map((e)=> idsArray.push(e.dataValues.id_place))
+    const allPlaces = await Place.findAll()
+    allPlaces.map((e)=> {
+      for (let id of idsArray) {
+        if (id === e.dataValues.id) {
+          placesData.push(e)
+        }
+      }
+    })
+    const response = {itineraryPlaces:res, places:placesData}
+    return (response);
   }
   catch (err) {console.log(err)}
   
@@ -108,6 +121,15 @@ const createPlace = async (body) => {
   }
 }
 
+const getItineraryPlaces = async (id) => {
+  try {
+    let res = await ItineraryPlace.findAll({ where: { id_itinerary: id } });
+    return res;
+  }
+  catch (err) {console.log(err)}
+  
+};
+
 module.exports = {
   getAllByUser,
   getRandoms,
@@ -115,6 +137,7 @@ module.exports = {
   addItineraryPlaces,
   deletePlace,
   getItineraryPlaces,
-  deletePlaces
+  deletePlaces,
+  getItineraryPlacesAndData
 };
 
