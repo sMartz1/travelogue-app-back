@@ -1,6 +1,6 @@
 
 const imgSchema = require('../schemas/Img')
-const { Place, Itinerary, FavoritePlace } = require("../models");
+const { Place, Itinerary, FavoritePlace , ItineraryPlace} = require("../models");
 
 //Function that retrieves places created and in favorites of an user.
 const getAllByUser = async (id_user) => {
@@ -12,6 +12,44 @@ const getAllByUser = async (id_user) => {
     tempArray["favorites"].push(favoriteP.dataValues)
   );
   return tempArray;
+};
+
+const addItineraryPlaces = async (data) => {
+  try {
+      const newItinerary = await ItineraryPlace.bulkCreate( data );
+      return newItinerary;
+  }
+  catch (err) {console.log(err)}
+
+};
+
+const deletePlace = async (data) => {
+
+  try {
+      const placeDeleted = await Place.destroy( { where : data} );
+      return placeDeleted;
+  }
+  catch (err) {console.log(err)}
+
+};
+
+const deletePlaces = async (data) => {
+
+  try {
+      const placeDeleted = await ItineraryPlace.destroy( { where : data} );
+      return placeDeleted;
+  }
+  catch (err) {console.log(err)}
+
+};
+
+const getItineraryPlaces = async (id) => {
+  try {
+    let res = await ItineraryPlace.findAll({ where: { id_itinerary: id } });
+    return res;
+  }
+  catch (err) {console.log(err)}
+  
 };
 
 /**
@@ -35,19 +73,19 @@ const getRandoms = async (type) => {
     } else {
       return []
     }
-
+    
     const numMax = Math.floor(Math.random() * (database.length - numberOfRandoms))
     for (let i = 0; i < numberOfRandoms; i++) {
       randomObjects.push(database[numMax + i])
     }
-
+    
     return randomObjects
-
+    
   } catch (error) {
     console.error(error)
     return []
   }
-
+  
 }
 
 const createPlace = async (body) => {
@@ -73,5 +111,10 @@ const createPlace = async (body) => {
 module.exports = {
   getAllByUser,
   getRandoms,
-  createPlace
+  createPlace,
+  addItineraryPlaces,
+  deletePlace,
+  getItineraryPlaces,
+  deletePlaces
 };
+
