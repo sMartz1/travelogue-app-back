@@ -8,7 +8,11 @@ const getAllByUser = async (id_user) => {
   let tempArray = { own: [], favorites: [] };
   const placeOwned = await Place.findAll({ where: { id_user } });
   const favoritePlace = await FavoritePlace.findAll({ where: { id_user } });
-  placeOwned.forEach((placeO) => tempArray["own"].push(placeO.dataValues));
+  for (const element of placeOwned) {
+    const placeImg = await imgSchema.find({idRel : element.dataValues.id})
+    const placeWithImg = {...element,...placeImg}
+      tempArray['own'].push(placeWithImg)
+  }
   favoritePlace.forEach((favoriteP) =>
     tempArray["favorites"].push(favoriteP.dataValues)
   );
@@ -68,11 +72,12 @@ const getItineraryPlacesAndData = async (id) => {
 
 //Function that retrieves a single place with his image
 const getPlaceById = async (id) => {
+
     const {dataValues} = await Place.findOne({where : {id}})
     const placeImg = await imgSchema.find({idRel : id})
     const placeWithImg = {...dataValues,...placeImg}
     return placeWithImg
-}
+} 
 
 /**
  * We collect all the elements, we generate a random number and use for
