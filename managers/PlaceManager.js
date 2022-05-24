@@ -125,6 +125,7 @@ const createPlace = async (body) => {
         location,
         id_user,
     })     
+    console.log(newPlace)
     }
     catch(err) {console.log(err)}
 
