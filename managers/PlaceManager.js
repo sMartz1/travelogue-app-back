@@ -16,6 +16,7 @@ const getAllByUser = async (id_user) => {
   favoritePlace.forEach((favoriteP) =>
     tempArray["favorites"].push(favoriteP.dataValues)
   );
+  console.log(tempArray);
   return tempArray;
 };
 
@@ -126,6 +127,8 @@ const createPlace = async (body) => {
         id_user,
     })     
     console.log(newPlace)
+    console.log(newPlace.dataValues)
+    return newPlace
     }
     catch(err) {console.log(err)}
 
