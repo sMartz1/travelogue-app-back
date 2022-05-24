@@ -118,12 +118,16 @@ const getRandoms = async (type) => {
 //Function that create a place with his correspondent image
 const createPlace = async (body) => {
     const {name,location,price,id_user,path_image} = body
-    const newPlace = await Place.create({
+    try {
+     const newPlace = await Place.create({
         name,
         price,
         location,
         id_user,
-    })
+    })     
+    }
+    catch(err) {console.log(err)}
+
 /*     try {
         const newImgSchema = new imgSchema({
             idRel : newPlace.id,
