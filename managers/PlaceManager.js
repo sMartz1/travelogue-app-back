@@ -124,7 +124,7 @@ const createPlace = async (body) => {
         location,
         id_user,
     })
-    try {
+/*     try {
         const newImgSchema = new imgSchema({
             idRel : newPlace.id,
             pathImage : path_image,
@@ -133,7 +133,7 @@ const createPlace = async (body) => {
         await newImgSchema.save()  
     } catch (error) {
         console.error(error)
-    }
+    } */
 }
 
 
